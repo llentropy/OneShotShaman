@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://3jm0u4r0s82g"]
+
+[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="1_dp3mn"]
+[ext_resource type="PackedScene" uid="uid://cfgqxg381e7g6" path="res://Scenes/Player.tscn" id="1_s3wyu"]
+[ext_resource type="PackedScene" uid="uid://c8pgxuh4mgrqj" path="res://Scenes/Trajectory.tscn" id="2_n22xk"]
+[ext_resource type="PackedScene" uid="uid://bndnja3slufh0" path="res://Scenes/Enemy.tscn" id="3_6r6ip"]
+[ext_resource type="Texture2D" uid="uid://slaforg4qaey" path="res://Sprites/Test Background-2.png" id="3_8grte"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4hr8j"]
+shader = ExtResource("1_dp3mn")
+shader_parameter/resolution = Vector2(128, 128)
+shader_parameter/scan_line_amount = 0.0
+shader_parameter/warp_amount = 0.287
+shader_parameter/noise_amount = 0.017
+shader_parameter/interference_amount = 0.176
+shader_parameter/grille_amount = 0.051
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.198
+shader_parameter/vignette_intensity = 0.73
+shader_parameter/aberation_amount = 0.51
+shader_parameter/roll_line_amount = 0.04
+shader_parameter/roll_speed = -0.292
+shader_parameter/scan_line_strength = -8.262
+shader_parameter/pixel_strength = -2.054
+
+[node name="Main Scene" type="Node2D"]
+
+[node name="Trajectory" parent="." node_paths=PackedStringArray("FirstTarget", "SecondTarget") instance=ExtResource("2_n22xk")]
+position = Vector2(0, 1)
+FirstTarget = NodePath("../Player")
+SecondTarget = NodePath("../Enemy")
+initial_scramble_amount = 10.0
+jumble_factor = 0.2
+
+[node name="Player" parent="." instance=ExtResource("1_s3wyu")]
+position = Vector2(64, 66)
+
+[node name="Enemy" parent="." instance=ExtResource("3_6r6ip")]
+position = Vector2(87, 66)
+
+[node name="CRT Effect" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("ShaderMaterial_4hr8j")
+position = Vector2(64, 64)
+texture = ExtResource("3_8grte")

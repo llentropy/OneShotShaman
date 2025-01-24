@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxu8mwat133lv"]
+
+[ext_resource type="Texture2D" uid="uid://cu3jlfpdogno0" path="res://Sprites/Trajectory Point.png" id="1_kde07"]
+
+[node name="TrajectoryPoint" type="Sprite2D"]
+visible = false
+texture_filter = 1
+texture = ExtResource("1_kde07")

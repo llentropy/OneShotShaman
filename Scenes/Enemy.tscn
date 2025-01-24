@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bndnja3slufh0"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ehr8h"]
+[ext_resource type="Texture2D" uid="uid://d0k87qvcgglax" path="res://Sprites/Enemy.png" id="2_verxk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8w54"]
+radius = 6.0
+
+[node name="Enemy" type="AnimatableBody2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_ehr8h")
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q8w54")
+
+[node name="Puppet" type="CharacterBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+motion_mode = 1
+
+[node name="PuppetSprite" type="Sprite2D" parent="Puppet"]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_verxk")
+
+[node name="PuppetCollision" type="CollisionShape2D" parent="Puppet"]
+shape = SubResource("CircleShape2D_q8w54")

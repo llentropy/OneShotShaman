@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8pgxuh4mgrqj"]
+
+[ext_resource type="Script" path="res://Scripts/trajectory.gd" id="1_in1p3"]
+
+[sub_resource type="Curve2D" id="Curve2D_lr7ie"]
+bake_interval = 2.95
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 97, 104, 0, 0, 0, 0, 140, 82, 20.0111, -2.14789, -20.0111, 2.14789, 118, 21, -13.3823, 8.14883, 13.3823, -8.14883, 64, 89, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Trajectory" type="Node2D"]
+script = ExtResource("1_in1p3")
+
+[node name="Line" type="Line2D" parent="."]
+width = 1.0
+default_color = Color(0.0823529, 1, 1, 1)
+
+[node name="Path" type="Path2D" parent="."]
+position = Vector2(4, 15)
+scale = Vector2(0.954801, 1)
+curve = SubResource("Curve2D_lr7ie")
