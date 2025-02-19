@@ -53,11 +53,9 @@ func generate() -> void:
 	points_target_positions_dict.clear();
 	$Path.curve.clear_points();
 	$Path.curve.add_point(FirstTarget.position, Vector2.ZERO, randomized_vector(50));
-	
-	
 	$Path.curve.add_point(SecondTarget.position,  randomized_vector(50), Vector2.ZERO);
 
-	var target_positions = $Path.curve.tessellate();
+	var target_positions = $Path.curve.tessellate(7);
 	
 	var scramble_factor = 0;
 	var scramble_increment = 0.2;
